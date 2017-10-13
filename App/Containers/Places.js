@@ -70,7 +70,14 @@ class Map extends PureComponent {
   render () {
     return (
       <View style={styles.container}>
-        <RoundedButton icon='arrow-back' size={50} iconSize={25} onPress={this.closePlacesTab} />
+        <RoundedButton
+          icon='arrow-back'
+          color={Colors.white}
+          styles={styles.backButton}
+          size={50}
+          iconSize={25}
+          onPress={this.closePlacesTab}
+        />
         {this.loader}
         {this.emptyState}
         <ListView

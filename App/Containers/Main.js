@@ -36,7 +36,7 @@ export class Main extends PureComponent {
 
   menuVisible = true
 
-  renderScene = SceneMap({
+  renderScene = () => SceneMap({
     [MENU_TAB_KEY]: () => (
       <Menu
         navigate={this.props.navigation.navigate}

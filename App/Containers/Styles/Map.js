@@ -3,6 +3,13 @@ import { ApplicationStyles, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   container: ApplicationStyles.screen.mainContainer,
+  backButton: {
+    backgroundColor: Colors.aqua,
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    zIndex: 1
+  },
   map: {
     flex: 1,
   },

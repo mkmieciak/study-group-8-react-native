@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/dist/MaterialIcons'
+import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons'
 import { ifElse, always, propEq, identity } from 'ramda'
 import { Colors } from '../Themes'
 

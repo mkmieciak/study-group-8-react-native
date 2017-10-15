@@ -22,7 +22,12 @@ class Menu extends PureComponent {
             color={Colors.yellow}
             onPress={() => this.props.switchFlashlight()}
           />
-          <MenuItem icon='compass' color={Colors.orange} />
+          <MenuItem
+            icon='compass'
+            color={Colors.orange}
+            disabled={!this.props.isCompassSupported}
+            onPress={() => this.props.navigate('Compass')}
+          />
           <MenuItem icon='map-marker' color={Colors.brown} />
           <MenuItem
             icon='camera'

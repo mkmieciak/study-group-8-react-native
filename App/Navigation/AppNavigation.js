@@ -3,6 +3,7 @@ import { Easing, Animated } from 'react-native'
 import Main from '../Containers/Main'
 import Camera from '../Containers/Camera'
 import Compass from '../Containers/Compass'
+import Morse from '../Containers/Morse'
 
 import styles from './Styles/NavigationStyles'
 
@@ -21,6 +22,12 @@ const PrimaryNav = StackNavigator({
     screen: Compass,
     navigationOptions: {
       headerTitle: 'COMPASS'
+    }
+  },
+  Morse: {
+    screen: Morse,
+    navigationOptions: {
+      headerTitle: 'MORSE'
     }
   }
 }, {

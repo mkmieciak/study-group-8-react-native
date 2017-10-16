@@ -45,6 +45,12 @@ class Menu extends PureComponent {
             onPress={() => this.props.setIsFlashlightActive(!this.props.isFlashlightActive)}
           />
           <MenuItem
+            icon='barcode'
+            color={Colors.blue}
+            disabled={!isFlashlightSupported}
+            onPress={() => this.props.navigate('Morse')}
+          />
+          <MenuItem
             icon='compass'
             color={Colors.orange}
             disabled={!isCompassSupported}

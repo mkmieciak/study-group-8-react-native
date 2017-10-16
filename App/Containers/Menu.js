@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { ifElse, propEq, always } from 'ramda'
+import { ifElse, propEq, always, when } from 'ramda'
 
 import { selectIsActive, selectIsSupported as selectIsFlashlightSupported } from '../Selectors/FlashlightSelectors'
 import { selectIsSupported as selectIsCompassSupported } from '../Selectors/CompassSelectors'
@@ -13,6 +13,14 @@ import { Colors } from '../Themes'
 import styles from './Styles/Menu'
 
 class Menu extends PureComponent {
+  get flashlightIcon() {
+    return ifElse(
+      propEq('isFlashlightActive', true),
+      always('lightbulb-on-outline'),
+      always('lightbulb-outline')
+    )(this.props)
+  }
+
   get flashlightIconColor() {
     return ifElse(propEq('isFlashlightActive', true), always(Colors.aqua), always(Colors.yellow))(this.props)
   }
@@ -24,7 +32,7 @@ class Menu extends PureComponent {
       <ScrollView style={styles.list}>
         <View style={styles.container}>
           <MenuItem
-            icon={`lightbulb${isFlashlightActive ? '-on' : ''}-outline`}
+            icon={this.flashlightIcon}
             color={this.flashlightIconColor}
             disabled={!isFlashlightSupported}
             onPress={() => this.props.setIsFlashlightActive(!this.props.isFlashlightActive)}

@@ -12,17 +12,13 @@ import PlacesActions from '../Redux/PlacesRedux'
 import PlaceItem from '../Components/PlaceItem'
 import RoundedButton from '../Components/RoundedButton'
 import { Colors } from '../Themes'
-import { MENU_TAB_KEY } from '../Containers/Main'
 
 import styles from './Styles/Map'
 
 class Map extends PureComponent {
   dataSource = new ListView.DataSource({ rowHasChanged: complement(equals) });
 
-  closePlacesTab = () => {
-    const placesIndex = this.props.tabs.routes.findIndex((route) => route.key === MENU_TAB_KEY);
-    this.props.changeTabIndex(placesIndex);
-  };
+  closePlacesTab = () => this.props.changeTabIndex(0);
 
   renderRow = ({ name, id, photos, icon }) => (
     <PlaceItem

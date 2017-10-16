@@ -39,10 +39,9 @@ export class Main extends PureComponent {
   renderScene = SceneMap({
     [MENU_TAB_KEY]: () => (<Menu
       changeTabIndex={this.props.changeTabIndex}
-      tabs={TABS}
       navigation={this.props.navigation}
     />),
-    [PLACES_TAB_KEY]: Places,
+    [PLACES_TAB_KEY]: () => <Places changeTabIndex={this.props.changeTabIndex} />,
   })
 
   toggleMenu = () => {

@@ -11,7 +11,6 @@ import FlashlightActions from '../Redux/FlashlightRedux'
 import MenuItem from '../Components/MenuItem'
 import { Colors } from '../Themes'
 import styles from './Styles/Menu'
-import { PLACES_TAB_KEY } from '../Containers/Main'
 
 
 class Menu extends PureComponent {
@@ -27,10 +26,7 @@ class Menu extends PureComponent {
     return ifElse(propEq('isFlashlightActive', true), always(Colors.aqua), always(Colors.yellow))(this.props)
   }
 
-  openPlacesTab = () => {
-    const placesIndex = this.props.tabs.routes.findIndex((route) => route.key === PLACES_TAB_KEY);
-    this.props.changeTabIndex(placesIndex);
-  };
+  openPlacesTab = () => this.props.changeTabIndex(1);
 
   render () {
     const { isFlashlightSupported, isCompassSupported } = this.props;
@@ -48,7 +44,7 @@ class Menu extends PureComponent {
             icon='barcode'
             color={Colors.blue}
             disabled={!isFlashlightSupported}
-            onPress={() => this.props.navigate('Morse')}
+            onPress={() => this.props.navigation.navigate('Morse')}
           />
           <MenuItem
             icon='compass'

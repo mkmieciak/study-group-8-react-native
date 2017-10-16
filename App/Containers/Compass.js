@@ -54,7 +54,7 @@ class Compass extends PureComponent {
           styles={styles.backButton}
           size={50}
           iconSize={25}
-          onPress={() => this.props.navigation.navigate('Main')}
+          onPress={() => this.props.navigation.goBack()}
         />
       </View>
     )

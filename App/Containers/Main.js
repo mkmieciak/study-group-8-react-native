@@ -36,15 +36,9 @@ export class Main extends PureComponent {
 
   menuVisible = true
 
-  renderScene = () => SceneMap({
-    [MENU_TAB_KEY]: () => (
-      <Menu
-        navigate={this.props.navigation.navigate}
-        tabs={TABS}
-        changeTabIndex={this.props.changeTabIndex}
-      />
-    ),
-    [PLACES_TAB_KEY]: () => <Places tabs={TABS} changeTabIndex={this.props.changeTabIndex}/>,
+  renderScene = SceneMap({
+    [MENU_TAB_KEY]: () => <Menu navigation={this.props.navigation} />,
+    [PLACES_TAB_KEY]: Places,
   })
 
   toggleMenu = () => {
@@ -110,7 +104,7 @@ export class Main extends PureComponent {
           <TabViewAnimated
             style={styles.content}
             navigationState={navigationState}
-            renderScene={this.renderScene()}
+            renderScene={this.renderScene}
             onIndexChange={this.props.changeTabIndex}
             onPositionChange={this.handlePositionChange}
           />

@@ -33,7 +33,7 @@ class Menu extends PureComponent {
   };
 
   render () {
-    const { isFlashlightActive, isFlashlightSupported, isCompassSupported } = this.props;
+    const { isFlashlightSupported, isCompassSupported } = this.props;
 
     return (
       <ScrollView style={styles.list}>
@@ -54,13 +54,13 @@ class Menu extends PureComponent {
             icon='compass'
             color={Colors.orange}
             disabled={!isCompassSupported}
-            onPress={() => this.props.navigate('Compass')}
+            onPress={() => this.props.navigation.navigate('Compass')}
           />
           <MenuItem icon='map-marker' color={Colors.brown} onPress={this.openPlacesTab}/>
           <MenuItem
             icon='camera'
             color={Colors.aqua}
-            onPress={() => this.props.navigate('Camera')}
+            onPress={() => this.props.navigation.navigate('Camera')}
           />
         </View>
       </ScrollView>

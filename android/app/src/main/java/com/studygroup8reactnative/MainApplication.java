@@ -46,7 +46,6 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebaseDatabasePackage(),
           new RNFirebaseStoragePackage(),
           new ReactNativeHeadingPackage(),
-          new RNFirebaseStoragePackage(),
           new FlashlightPackage()
       );
     }

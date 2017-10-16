@@ -16,9 +16,9 @@ import { startup } from './StartupSagas'
 import { request as placesRequest } from './PlacesSagas'
 import { changeRegion } from './MapSagas'
 import { startWatchingPosition, getCurrentPosition } from './GeolocationSagas'
-import { initialize, startWatchingDirection } from './CompassSagas'
+import { initialize as initializeCompass, startWatchingDirection } from './CompassSagas'
 import { imageSearchRequest } from './CameraSagas'
-import { switchFlashlight } from './FlashlightSagas'
+import { initialize as initializeFlashlight, setIsFlashlightActive } from './FlashlightSagas'
 
 /* ------------- Connect Types To Sagas ------------- */
 
@@ -29,13 +29,10 @@ export default function * root () {
     takeLatest(MapTypes.CHANGE_REGION, changeRegion),
     takeLatest(GeolocationTypes.GET_CURRENT_POSITION, getCurrentPosition),
     takeLatest(GeolocationTypes.START_WATCHING_POSITION, startWatchingPosition),
-<<<<<<< HEAD
-    takeLatest(CompassTypes.INITIALIZE, initialize),
+    takeLatest(CompassTypes.INITIALIZE, initializeCompass),
     takeLatest(CompassTypes.START_WATCHING_DIRECTION, startWatchingDirection),
-    takeLatest(CameraTypes.IMAGE_SEARCH_REQUEST, imageSearchRequest)
-=======
     takeLatest(CameraTypes.IMAGE_SEARCH_REQUEST, imageSearchRequest),
-    takeLatest(FlashlightTypes.SWITCH, switchFlashlight),
->>>>>>> Sync flashlight state with camera flash unit
+    takeLatest(FlashlightTypes.SET_IS_ACTIVE, setIsFlashlightActive),
+    takeLatest(FlashlightTypes.INITIALIZE, initializeFlashlight)
   ])
 }

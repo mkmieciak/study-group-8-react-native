@@ -30,6 +30,7 @@ export default class MenuItem extends PureComponent {
     return (
       <View style={styles.container}>
         <TouchableOpacity
+          key={this.props.disabled}
           style={[styles.iconWrapper, {
             backgroundColor: this.props.color,
             opacity: ifElse(propEq('disabled', true), always(0.2), always(1))(this.props)

@@ -2,19 +2,27 @@ import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
-  switch: []
+  initialize: [],
+  initializeSuccess: ['isActive'],
+  setIsActive: ['isActive']
 }, { prefix: 'FLASHLIGHT_' })
 
 export const FlashlightTypes = Types
 export default Creators
 
 export const INITIAL_STATE = Immutable({
-  active: false
+  isActive: false,
+  isSupported: false,
 })
 
-export const switchHandler = state => state
-  .set('active', !state.active)
+export const initializeSuccessHandler = (state, { isActive }) => state
+  .set('isActive', isActive)
+  .set('isSupported', true)
+
+export const setIsActiveHandler = (state, { isActive }) => state
+  .set('isActive', isActive)
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SWITCH]: switchHandler,
+  [Types.INITIALIZE_SUCCESS]: initializeSuccessHandler,
+  [Types.SET_IS_ACTIVE]: setIsActiveHandler,
 })

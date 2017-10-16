@@ -11,6 +11,8 @@ import FlashlightActions from '../Redux/FlashlightRedux'
 import MenuItem from '../Components/MenuItem'
 import { Colors } from '../Themes'
 import styles from './Styles/Menu'
+import { PLACES_TAB_KEY } from '../Containers/Main'
+
 
 class Menu extends PureComponent {
   get flashlightIcon() {
@@ -24,6 +26,11 @@ class Menu extends PureComponent {
   get flashlightIconColor() {
     return ifElse(propEq('isFlashlightActive', true), always(Colors.aqua), always(Colors.yellow))(this.props)
   }
+
+  openPlacesTab = () => {
+    const placesIndex = this.props.tabs.routes.findIndex((route) => route.key === PLACES_TAB_KEY);
+    this.props.changeTabIndex(placesIndex);
+  };
 
   render () {
     const { isFlashlightActive, isFlashlightSupported, isCompassSupported } = this.props;
@@ -43,7 +50,7 @@ class Menu extends PureComponent {
             disabled={!isCompassSupported}
             onPress={() => this.props.navigate('Compass')}
           />
-          <MenuItem icon='map-marker' color={Colors.brown} />
+          <MenuItem icon='map-marker' color={Colors.brown} onPress={this.openPlacesTab}/>
           <MenuItem
             icon='camera'
             color={Colors.aqua}

@@ -19,8 +19,8 @@ import { selectTabIndex } from '../Selectors/MainSelectors'
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 const hiddenMenuTranslate = Metrics.screenHeight / 3;
 
-const PLACES_TAB_KEY = 'places';
-const MENU_TAB_KEY = 'menu';
+export const PLACES_TAB_KEY = 'places';
+export const MENU_TAB_KEY = 'menu';
 const TABS = {
   routes: [
     { key: MENU_TAB_KEY },
@@ -38,9 +38,13 @@ export class Main extends PureComponent {
 
   renderScene = () => SceneMap({
     [MENU_TAB_KEY]: () => (
-      <Menu navigate={this.props.navigation.navigate} />
+      <Menu
+        navigate={this.props.navigation.navigate}
+        tabs={TABS}
+        changeTabIndex={this.props.changeTabIndex}
+      />
     ),
-    [PLACES_TAB_KEY]: Places,
+    [PLACES_TAB_KEY]: () => <Places tabs={TABS} changeTabIndex={this.props.changeTabIndex}/>,
   })
 
   toggleMenu = () => {

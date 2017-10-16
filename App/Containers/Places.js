@@ -10,12 +10,19 @@ import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 import { selectPlacesData, selectIsFetching, arePlacesEmpty, selectSelectedPlace } from '../Selectors/PlacesSelectors'
 import PlacesActions from '../Redux/PlacesRedux'
 import PlaceItem from '../Components/PlaceItem'
+import RoundedButton from '../Components/RoundedButton'
 import { Colors } from '../Themes'
+import { MENU_TAB_KEY } from '../Containers/Main'
 
 import styles from './Styles/Map'
 
 class Map extends PureComponent {
   dataSource = new ListView.DataSource({ rowHasChanged: complement(equals) });
+
+  closePlacesTab = () => {
+    const placesIndex = this.props.tabs.routes.findIndex((route) => route.key === MENU_TAB_KEY);
+    this.props.changeTabIndex(placesIndex);
+  };
 
   renderRow = ({ name, id, photos, icon }) => (
     <PlaceItem
@@ -63,6 +70,14 @@ class Map extends PureComponent {
   render () {
     return (
       <View style={styles.container}>
+        <RoundedButton
+          icon='arrow-back'
+          color={Colors.white}
+          styles={styles.backButton}
+          size={50}
+          iconSize={25}
+          onPress={this.closePlacesTab}
+        />
         {this.loader}
         {this.emptyState}
         <ListView

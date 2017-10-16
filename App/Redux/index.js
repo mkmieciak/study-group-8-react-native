@@ -6,6 +6,7 @@ import { reducer as map } from './MapRedux'
 import { reducer as places } from './PlacesRedux'
 import { reducer as geolocation } from './GeolocationRedux'
 import { reducer as camera } from './CameraRedux'
+import { reducer as flashlight } from './FlashlightRedux'
 import { reducer as compass } from './CompassRedux'
 
 export default () => {
@@ -17,6 +18,7 @@ export default () => {
     places,
     geolocation,
     camera,
+    flashlight,
     compass
   })
 

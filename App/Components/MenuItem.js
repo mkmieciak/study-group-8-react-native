@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/dist/MaterialIcons'
+import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons'
 import { ifElse, always, propEq, identity } from 'ramda'
 import { Colors } from '../Themes'
 
@@ -30,6 +30,7 @@ export default class MenuItem extends PureComponent {
     return (
       <View style={styles.container}>
         <TouchableOpacity
+          key={this.props.disabled}
           style={[styles.iconWrapper, {
             backgroundColor: this.props.color,
             opacity: ifElse(propEq('disabled', true), always(0.2), always(1))(this.props)
